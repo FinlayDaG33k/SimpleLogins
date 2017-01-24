@@ -9,3 +9,4 @@ A small list of variables you can call:
 |:-------------:|:-------------:|:----------:|
 | SL_Username     | $_SESSION['SL_Username'] |FinlayDaG33k|
 | SL_UserID      | $_SESSION['SL_UserID']      |1|
+| SL_Loggedin      | $_SESSION['SL_Loggedin ']      |TRUE|
