@@ -1,6 +1,6 @@
 <script type="text/javascript">console.log("%cSTOP!\nThis is a browser feature intended for developers.\nIf someone told you to copy and paste something here to enable a feature or \"hack\" someone's account, it is a scam and could give them access to your browser!\nRead more at Wikipedia: https://en.wikipedia.org/wiki/Self-XSS", "color:red; font-size: 16pt");</script>
 <?php
-
+session_start();
 if(!file_exists(DIRNAME(__FILE__) . '/lockfile')){
 	echo "This appears to be a fresh install, please head over to <a href=\"SimpleLogins/install.php\">this</a> page to start the configuration";
 	exit;
@@ -24,6 +24,13 @@ if(!file_exists(DIRNAME(__FILE__) . '/lockfile')){
 		<?php
 	}
 
-	$sl_conn = $SimpleLogins->Database->Initialize($sl_config['SQL']['Host'],$sl_config['SQL']['Username'],$sl_config['SQL']['Password'],$sl_config['SQL']['Database']);
+	if($sl_config['SQL']['SingleSession']){
+		$SimpleLogins->Users->Check_Session($sl_config);
+	}
+
+	if($sl_config['Captcha']['Enabled']){
+		echo $SimpleLogins->sl_Vars()['Captcha_script'];
+	}
+
 }
 ?>

@@ -1,0 +1,7 @@
+# Ignore the SimpleLogins Configuration things
+demo/SimpleLogins/config.php
+demo/SimpleLogins/lockfile
+
+# Ignore the IDE stuff
+.ftpconfig
+phpmyadmin

@@ -24,6 +24,13 @@ if(!file_exists(DIRNAME(__FILE__) . '/lockfile')){
 		<?php
 	}
 
-	$sl_conn = $SimpleLogins->Database->Initialize($sl_config['SQL']['Host'],$sl_config['SQL']['Username'],$sl_config['SQL']['Password'],$sl_config['SQL']['Database']);
+	if($sl_config['SQL']['SingleSession']){
+		$SimpleLogins->Users->Check_Session($sl_config);
+	}
+
+	if($sl_config['Captcha']['Enabled']){
+		echo $SimpleLogins->sl_Vars()['Captcha_script'];
+	}
+
 }
 ?>
